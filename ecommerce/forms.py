@@ -23,13 +23,14 @@ class RegisterForm(forms.Form):
 
     password = forms.CharField(label = "Password", widget = forms.PasswordInput(attrs={"class": "form-control"}))
     password2 = forms.CharField(label = "Confirm Password", widget = forms.PasswordInput(attrs={"class": "form-control"}))
+
     def clean_email(self):
         email = self.cleaned_data.get("email")
         qs = User.object.filter(email = email)
         if qs.exists():
             raise forms.ValidationError("Username already exists!")
         return email
-        
+
     def clean(self):
         data = self.cleaned_data
         password = self.cleaned_data.get("password")

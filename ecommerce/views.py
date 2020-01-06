@@ -48,6 +48,7 @@ def login_page(request):
         else:
             print("Error!")
     return render(request, "auth/login.html", context)
+
 User = get_user_model()
 
 def register_page(request):
@@ -60,5 +61,5 @@ def register_page(request):
         email = form.cleaned_data.get("username")
         password = form.cleaned_data.get("password")
         new_user = User.objects.create_user(email, password)
-    
+
     return render(request, "auth/register.html", context)
