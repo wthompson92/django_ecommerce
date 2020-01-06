@@ -19,4 +19,6 @@ urlpatterns = [
     path('',include('ecommerce.urls')),
     path('about',include('ecommerce.urls')),
     path('contact',include('ecommerce.urls')),
-]
+    path('login',include('ecommerce.urls')),
+    path('register',include('ecommerce.urls'))
+    ]
