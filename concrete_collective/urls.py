@@ -18,13 +18,16 @@ from django.urls import include, path
 
 from django.conf import settings
 from django.conf.urls.static import static
-
+from products.views import ProductListView, ProductDetailView
 urlpatterns = [
     path('',include('ecommerce.urls')),
     path('about',include('ecommerce.urls')),
     path('contact',include('ecommerce.urls')),
     path('login',include('ecommerce.urls')),
-    path('register',include('ecommerce.urls'))
+    path('register',include('ecommerce.urls')),
+    path('products', ProductListView.as_view()),
+    path('products/<pk>', ProductDetailView.as_view()),
+    path('admin',admin.site.urls)
     ]
 
 if settings.DEBUG:
